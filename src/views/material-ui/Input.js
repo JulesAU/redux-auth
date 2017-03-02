@@ -14,7 +14,7 @@ class AuthInput extends React.Component {
 
   static defaultProps = {
     label: "",
-    value: null,
+    value: "",
     errors: Immutable.fromJS([])
   };
 
@@ -51,12 +51,13 @@ class AuthInput extends React.Component {
   }
 
   render () {
+    const { errors, ...validProps } = this.props
     return (
       <MuiThemeProvider>
         <TextField
           fullWidth={true}
           id={this.props.className}
-          {...this.props}
+          {...validProps}
           errorText={this.renderErrorList()}
           onChange={this.handleInput.bind(this)} />
       </MuiThemeProvider>
