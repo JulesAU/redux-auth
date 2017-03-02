@@ -202,7 +202,8 @@ export function retrieveData (key, storage) {
       break;
 
     default:
-      val = Cookies.get(key);
+    // Don't try to use document.cookie when running server-side.
+      val = (typeof document !== 'undefined') && Cookies.get(key);
       break;
   }
 
